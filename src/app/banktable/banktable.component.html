@@ -1,0 +1,38 @@
+<div class="top-bar" style="text-align:center; margin-bottom:15px;">
+  <input 
+    type="date" 
+    [(ngModel)]="selectedDate"
+    style="padding:6px; margin-right:8px;"
+  >
+  
+  <button 
+    (click)="filterByDate()"
+    style="padding:6px 12px; cursor:pointer;"
+  >
+    Filter
+  </button>
+</div>
+
+<table border="1" width="100%" style="border-collapse:collapse;">
+  <thead style="background:#f2f2f2;">
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th (click)="sortByAmount()" style="cursor:pointer">
+        Amount ($)
+      </th>
+      <th>Available Balance</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let txn of displayedTransactions">
+      <td>{{ txn.date }}</td>
+      <td>{{ txn.description }}</td>
+      <td>{{ txn.type === 0 ? 'Credit' : 'Debit' }}</td>
+      <td>{{ txn.amount }}</td>
+      <td>{{ txn.balance }}</td>
+    </tr>
+  </tbody>
+</table>
